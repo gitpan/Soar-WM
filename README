@@ -2,12 +2,12 @@ NAME
     Soar::WM - Traverse Soar working memory dumps
 
 VERSION
-    version 0.01
+    version 0.02
 
 SYNOPSIS
       use Soar::WM qw(wm_root_from_file);
       my $root = wm_root_from_file('/path/to/wme/dump');
-      print $root->id;
+      print $root->id; #probably prints S1
 
 DESCRIPTION
     This module represents Soar's working memory. It can be used for
@@ -18,16 +18,35 @@ NAME
     WME dump file
 
 METHODS
+  "new"
+    Creates a new instance of Soar::WM. The arguments to this method are the
+    same as those to wm_root.
+
+  "get_wme"
+    Argument: string working memory element ID ('S1', 'Z33', etc.); since
+    WME ID's are always uppercase, this method is case insensitive.
+
+    Returns a Soar::WM::Element instance representing the given ID.
+
   "wm_root_from_file"
-This is a shortcut for:
- wm_root(file=>$arg)
-It's single argument is the path to a WME dump file, or an opened file handle for one. It returns a Soar::WM::Element object representing the root
-of the given WME dump.
+    This is a shortcut for:
+
+     wm_root(file=>$arg)
+
+    It's single argument is the path to a WME dump file, or an opened file
+    handle for one. It returns a Soar::WM::Element object representing the
+    root of the given WME dump.
+
   "wm_root"
-This function reads in a Soar WME dump and returnes a Soar::WM::Element representing its root.
-It takes a named argument, file or text. Using "wm_root(file="path)> or "wm_root(file="$fileGlob)>, you can create an object given the path to a WME dump file.
-Using "wm_root(text="'(S1 ^foo bar)')>, you can create an object using a given WME dump text. 
-If neither argument is specified, this function will wait for input from standard in.
+    This function reads in a Soar WME dump and returnes a Soar::WM::Element
+    representing its root. It takes a named argument, file or text. Using
+    "wm_root(file="path)> or "wm_root(file="$fileGlob)>, you can create an
+    object given the path to a WME dump file.
+
+    Using "wm_root(text="'(S1 ^foo bar)')>, you can create an object using a
+    given WME dump text. If neither argument is specified, this function
+    will wait for input from standard in.
+
   TO DO
     Currently there is no separate constructor for a Soar::WM object;
     instead, the only existing functions return the root of a Soar::WM

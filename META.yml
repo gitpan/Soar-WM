@@ -29,13 +29,13 @@ no_index:
 provides:
   Soar::WM:
     file: lib/Soar/WM.pm
-    version: 0.01
+    version: 0.02
   Soar::WM::Element:
     file: lib/Soar/WM/Element.pm
-    version: 0.01
+    version: 0.02
   Soar::WM::Slurp:
     file: lib/Soar/WM/Slurp.pm
-    version: 0.01
+    version: 0.02
 requires:
   Carp: 0
   Exporter: 0
@@ -49,7 +49,7 @@ resources:
   homepage: https://github.com/garfieldnate/Soar-WM
   license: http://dev.perl.org/licenses/
   repository: https://github.com/garfieldnate/Soar-WM.git
-version: 0.01
+version: 0.02
 x_BuiltWith:
   modules:
     Carp: 1.26
@@ -61,8 +61,8 @@ x_BuiltWith:
     File::Temp: 0.22
     FindBin: 1.51
     Module::Build: 0.4002
-    Pod::Coverage::TrustPod: 0.100002
-    Test::CPAN::Meta: 0.22
+    Pod::Coverage::TrustPod: 'NA(possibly not installed)'
+    Test::CPAN::Meta: 'NA(possibly not installed)'
     Test::Deep: 0.11
     Test::More: 0.98
     Test::NoWarnings: 1.04

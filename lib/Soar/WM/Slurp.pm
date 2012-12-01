@@ -17,7 +17,7 @@ use Carp;
 use base qw(Exporter);
 our @EXPORT_OK = qw(read_wm_file read_wm);
 
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 # ABSTRACT: Read and parse Soar working memory dumps
 
 say Dump read_wm( file => $ARGV[0] ) unless caller;
@@ -149,7 +149,7 @@ Soar::WM::Slurp - Read and parse Soar working memory dumps
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

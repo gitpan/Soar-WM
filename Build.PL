@@ -27,7 +27,7 @@ my %module_build_args = (
     "Nathan Glenn <garfieldnate\@gmail.com>"
   ],
   "dist_name" => "Soar-WM",
-  "dist_version" => "0.01",
+  "dist_version" => "0.02",
   "license" => "perl",
   "module_name" => "Soar::WM",
   "recommends" => {},

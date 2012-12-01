@@ -10,7 +10,7 @@ package Soar::WM::Element;
 use strict;
 use warnings;
 
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 # ABSTRACT: Work with Soar working memory elements
 
 use Carp;
@@ -101,7 +101,7 @@ Soar::WM::Element - Work with Soar working memory elements
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

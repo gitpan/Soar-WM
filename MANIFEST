@@ -15,8 +15,9 @@ lib/Soar/WM/Slurp.pm
 t/00-compile.t
 t/000-report-versions-tiny.t
 t/01-slurp.t
-t/02-traversal.t
-t/03-errors.t
+t/02-wm.t
+t/03-traversal.t
+t/04-errors.t
 t/data/wmedumpSmall.txt
 t/perlcriticrc
 xt/author/critic.t
