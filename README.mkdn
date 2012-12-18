@@ -4,13 +4,19 @@ Soar::WM - Traverse Soar working memory dumps
 
 # VERSION
 
-version 0.02
+version 0.03
 
 # SYNOPSIS
 
     use Soar::WM qw(wm_root_from_file);
     my $root = wm_root_from_file('/path/to/wme/dump');
     print $root->id; #probably prints S1
+    
+
+    #or
+    my $wm = Soar::WM->new(text => '(S1 ^foo bar)
+    (S2 ^boo far)');
+    my $wme = $wm->get_wme('s2');
 
 # DESCRIPTION
 
@@ -27,14 +33,14 @@ Soar::WM - Perl extension for representing Soar working memory given a WME dump 
 
 Creates a new instance of Soar::WM. The arguments to this method are the same as those to wm\_root.
 
-## `get_wme`
+## `get\_wme`
 
 Argument: string working memory element ID ('S1', 'Z33', etc.); since WME ID's are always uppercase, this method is
 case insensitive.
 
 Returns a [Soar::WM::Element](http://search.cpan.org/perldoc?Soar::WM::Element) instance representing the given ID. 
 
-## `wm_root_from_file`
+## `wm\_root\_from\_file`
 
 This is a shortcut for:
 
@@ -43,19 +49,13 @@ This is a shortcut for:
 It's single argument is the path to a WME dump file, or an opened file handle for one. It returns a [Soar::WM::Element](http://search.cpan.org/perldoc?Soar::WM::Element) object representing the root
 of the given WME dump.
 
-## `wm_root`
+## `wm\_root`
 
 This function reads in a Soar WME dump and returnes a [Soar::WM::Element](http://search.cpan.org/perldoc?Soar::WM::Element) representing its root.
 It takes a named argument, file or text. Using `wm_root(file=`path)> or `wm_root(file=`$fileGlob)>, you can create an object given the path to a WME dump file.
 
 Using `wm_root(text=`'(S1 ^foo bar)')>, you can create an object using a given WME dump text. 
 If neither argument is specified, this function will wait for input from standard in.
-
-## TO DO
-
-Currently there is no separate constructor for a Soar::WM object; instead, the only existing functions return the root of a Soar::WM object,
-which is an instance of [Soar::WM::Element](http://search.cpan.org/perldoc?Soar::WM::Element). Besides a separate constructor, one might find it useful to be able to grab any element of a Soar::WM
-object given its ID. I have not found this expedient, and so have not coded. If you really want it, just shoot me an email.
 
 # SEE ALSO
 

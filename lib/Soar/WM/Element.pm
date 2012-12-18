@@ -10,7 +10,7 @@ package Soar::WM::Element;
 use strict;
 use warnings;
 
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 # ABSTRACT: Work with Soar working memory elements
 
 use Carp;
@@ -48,7 +48,7 @@ sub vals {
         return;
     }
     my @values = @{ $self->{node}->{$query} };
-
+	
     #find ones that are links and change them into WME instances
     for ( 0 .. $#values ) {
         if ( exists $self->{wm}->{ $values[$_] } ) {
@@ -56,6 +56,30 @@ sub vals {
         }
     }
     return \@values;
+}
+
+sub children {
+    my ($self , %args) = @_;
+	
+	my @children;
+	for my $key ( keys %{$self->{node}} ){
+		push @children, @{ $self->{node}->{$key} };
+	}
+	
+    #find ones that are links and change them into WME instances
+    for ( 0 .. $#children ) {
+        if ( exists $self->{wm}->{ $children[$_] } ) {
+            $children[$_] = __PACKAGE__->new( $self->{wm}, $children[$_] );
+        }
+    }
+	my $retVal;
+	if($args{links_only}){
+		my @links = grep {ref($_) eq 'Soar::WM::Element'} @children;
+		$retVal = \@links;
+	}else{
+		$retVal = \@children;
+	}
+    return $retVal;
 }
 
 sub first_val {
@@ -68,6 +92,10 @@ sub first_val {
     # grab only the first value
     my $value = ${ $self->{node}->{$query} }[0];
 
+	if(not defined $value){
+		return;
+	}
+	
     #if value is a link, change it into a WME instance
     if ( exists $self->{wm}->{$value} ) {
         $value = __PACKAGE__->new( $self->{wm}, $value );
@@ -101,7 +129,7 @@ Soar::WM::Element - Work with Soar working memory elements
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -147,6 +175,11 @@ Returns an array pointer containing the attributes present in this element.
 
 Takes one required argument, an attribute name, and returns an array pointer containing all of the values of the given attribute
 for this element. Any values that are names of other working memory elements will be blessed as new Soar::WM::Elements.
+
+=head2 C<children>
+
+The same as vals, but returns the value of every attribute as an array pointer. The optional parameter 'links_only => 1' will cause
+the method to only return children which are links to other Soar::WM::Elements.
 
 =head2 C<first_val>
 

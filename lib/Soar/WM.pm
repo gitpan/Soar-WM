@@ -18,7 +18,7 @@ use Carp;
 use base 'Exporter';
 our @EXPORT_OK = qw( wm_root_from_file wm_root );
 
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 print 'root is ' . __PACKAGE__->wm_root_from_file( $ARGV[0] )->id unless caller;
 
@@ -70,13 +70,18 @@ Soar::WM - Traverse Soar working memory dumps
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
   use Soar::WM qw(wm_root_from_file);
   my $root = wm_root_from_file('/path/to/wme/dump');
   print $root->id; #probably prints S1
+  
+  #or
+  my $wm = Soar::WM->new(text => '(S1 ^foo bar)
+  (S2 ^boo far)');
+  my $wme = $wm->get_wme('s2');
 
 =head1 DESCRIPTION
 
@@ -116,12 +121,6 @@ It takes a named argument, file or text. Using C<wm_root(file=>path)> or C<wm_ro
 
 Using C<wm_root(text=>'(S1 ^foo bar)')>, you can create an object using a given WME dump text. 
 If neither argument is specified, this function will wait for input from standard in.
-
-=head2 TO DO
-
-Currently there is no separate constructor for a Soar::WM object; instead, the only existing functions return the root of a Soar::WM object,
-which is an instance of L<Soar::WM::Element>. Besides a separate constructor, one might find it useful to be able to grab any element of a Soar::WM
-object given its ID. I have not found this expedient, and so have not coded. If you really want it, just shoot me an email.
 
 =head1 SEE ALSO
 
