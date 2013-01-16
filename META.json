@@ -67,15 +67,15 @@
    "provides" : {
       "Soar::WM" : {
          "file" : "lib/Soar/WM.pm",
-         "version" : "0.03"
+         "version" : "0.04"
       },
       "Soar::WM::Element" : {
          "file" : "lib/Soar/WM/Element.pm",
-         "version" : "0.03"
+         "version" : "0.04"
       },
       "Soar::WM::Slurp" : {
          "file" : "lib/Soar/WM/Slurp.pm",
-         "version" : "0.03"
+         "version" : "0.04"
       }
    },
    "release_status" : "stable",
@@ -94,7 +94,7 @@
          "web" : "https://github.com/garfieldnate/Soar-WM"
       }
    },
-   "version" : "0.03",
+   "version" : "0.04",
    "x_BuiltWith" : {
       "modules" : {
          "Carp" : "1.26",
@@ -106,8 +106,8 @@
          "File::Temp" : "0.22",
          "FindBin" : "1.51",
          "Module::Build" : "0.4002",
-         "Pod::Coverage::TrustPod" : "0.100002",
-         "Test::CPAN::Meta" : "0.22",
+         "Pod::Coverage::TrustPod" : "NA(possibly not installed)",
+         "Test::CPAN::Meta" : "NA(possibly not installed)",
          "Test::Deep" : "0.11",
          "Test::More" : "0.98",
          "Test::NoWarnings" : "1.04",

@@ -10,7 +10,7 @@ package Soar::WM::Element;
 use strict;
 use warnings;
 
-our $VERSION = '0.03'; # VERSION
+our $VERSION = '0.04'; # VERSION
 # ABSTRACT: Work with Soar working memory elements
 
 use Carp;
@@ -47,6 +47,7 @@ sub vals {
         carp 'missing argument attribute name';
         return;
     }
+	return [] unless exists $self->{node}->{$query};
     my @values = @{ $self->{node}->{$query} };
 	
     #find ones that are links and change them into WME instances
@@ -88,6 +89,7 @@ sub first_val {
         carp 'missing argument attribute name';
         return;
     }
+	return unless exists $self->{node}->{$query};
 
     # grab only the first value
     my $value = ${ $self->{node}->{$query} }[0];
@@ -129,7 +131,7 @@ Soar::WM::Element - Work with Soar working memory elements
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

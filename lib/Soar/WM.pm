@@ -18,7 +18,7 @@ use Carp;
 use base 'Exporter';
 our @EXPORT_OK = qw( wm_root_from_file wm_root );
 
-our $VERSION = '0.03'; # VERSION
+our $VERSION = '0.04'; # VERSION
 
 print 'root is ' . __PACKAGE__->wm_root_from_file( $ARGV[0] )->id unless caller;
 
@@ -70,7 +70,7 @@ Soar::WM - Traverse Soar working memory dumps
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

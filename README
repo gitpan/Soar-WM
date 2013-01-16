@@ -2,7 +2,7 @@ NAME
     Soar::WM - Traverse Soar working memory dumps
 
 VERSION
-    version 0.03
+    version 0.04
 
 SYNOPSIS
       use Soar::WM qw(wm_root_from_file);
